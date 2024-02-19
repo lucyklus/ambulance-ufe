@@ -7,12 +7,10 @@ describe('mandova-ambulance-wl-list', () => {
       components: [MandovaAmbulanceWlList],
       html: `<mandova-ambulance-wl-list></mandova-ambulance-wl-list>`,
     });
-    expect(page.root).toEqualHtml(`
-      <mandova-ambulance-wl-list>
-        <mock:shadow-root>
-          <slot></slot>
-        </mock:shadow-root>
-      </mandova-ambulance-wl-list>
-    `);
+    const wlList = page.rootInstance as MandovaAmbulanceWlList;
+    const expectedPatients = wlList?.waitingPatients?.length;
+
+    const items = page.root.shadowRoot.querySelectorAll('md-list-item');
+    expect(items.length).toEqual(expectedPatients);
   });
 });
