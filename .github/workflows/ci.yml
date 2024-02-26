@@ -18,6 +18,7 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
+
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v1
 
@@ -42,9 +43,9 @@ jobs:
           type=ref,event=branch
           type=ref,event=branch,suffix={{date 'main.20240219.1400'}}
           type=ref,event=tag
-          type=semver,pattern=v1.0.0
-          type=semver,pattern=1.0
-          type=semver,pattern=1
+          type=semver,pattern={{version}}
+          type=semver,pattern={{major}}.{{minor}}
+          type=semver,pattern={{major}}
           type=raw,value=latest,enable={{is_default_branch}}
 
     - uses: docker/build-push-action@v2

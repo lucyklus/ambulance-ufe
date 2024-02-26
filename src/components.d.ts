@@ -6,24 +6,84 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface MandovaAmbulanceWlApp {
+        "basePath": string;
+    }
+    interface MandovaAmbulanceWlEditor {
+        "entryId": string;
+    }
     interface MandovaAmbulanceWlList {
     }
 }
+export interface MandovaAmbulanceWlEditorCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLMandovaAmbulanceWlEditorElement;
+}
+export interface MandovaAmbulanceWlListCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLMandovaAmbulanceWlListElement;
+}
 declare global {
+    interface HTMLMandovaAmbulanceWlAppElement extends Components.MandovaAmbulanceWlApp, HTMLStencilElement {
+    }
+    var HTMLMandovaAmbulanceWlAppElement: {
+        prototype: HTMLMandovaAmbulanceWlAppElement;
+        new (): HTMLMandovaAmbulanceWlAppElement;
+    };
+    interface HTMLMandovaAmbulanceWlEditorElementEventMap {
+        "editor-closed": string;
+    }
+    interface HTMLMandovaAmbulanceWlEditorElement extends Components.MandovaAmbulanceWlEditor, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLMandovaAmbulanceWlEditorElementEventMap>(type: K, listener: (this: HTMLMandovaAmbulanceWlEditorElement, ev: MandovaAmbulanceWlEditorCustomEvent<HTMLMandovaAmbulanceWlEditorElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLMandovaAmbulanceWlEditorElementEventMap>(type: K, listener: (this: HTMLMandovaAmbulanceWlEditorElement, ev: MandovaAmbulanceWlEditorCustomEvent<HTMLMandovaAmbulanceWlEditorElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLMandovaAmbulanceWlEditorElement: {
+        prototype: HTMLMandovaAmbulanceWlEditorElement;
+        new (): HTMLMandovaAmbulanceWlEditorElement;
+    };
+    interface HTMLMandovaAmbulanceWlListElementEventMap {
+        "entry-clicked": string;
+    }
     interface HTMLMandovaAmbulanceWlListElement extends Components.MandovaAmbulanceWlList, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLMandovaAmbulanceWlListElementEventMap>(type: K, listener: (this: HTMLMandovaAmbulanceWlListElement, ev: MandovaAmbulanceWlListCustomEvent<HTMLMandovaAmbulanceWlListElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLMandovaAmbulanceWlListElementEventMap>(type: K, listener: (this: HTMLMandovaAmbulanceWlListElement, ev: MandovaAmbulanceWlListCustomEvent<HTMLMandovaAmbulanceWlListElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLMandovaAmbulanceWlListElement: {
         prototype: HTMLMandovaAmbulanceWlListElement;
         new (): HTMLMandovaAmbulanceWlListElement;
     };
     interface HTMLElementTagNameMap {
+        "mandova-ambulance-wl-app": HTMLMandovaAmbulanceWlAppElement;
+        "mandova-ambulance-wl-editor": HTMLMandovaAmbulanceWlEditorElement;
         "mandova-ambulance-wl-list": HTMLMandovaAmbulanceWlListElement;
     }
 }
 declare namespace LocalJSX {
+    interface MandovaAmbulanceWlApp {
+        "basePath"?: string;
+    }
+    interface MandovaAmbulanceWlEditor {
+        "entryId"?: string;
+        "onEditor-closed"?: (event: MandovaAmbulanceWlEditorCustomEvent<string>) => void;
+    }
     interface MandovaAmbulanceWlList {
+        "onEntry-clicked"?: (event: MandovaAmbulanceWlListCustomEvent<string>) => void;
     }
     interface IntrinsicElements {
+        "mandova-ambulance-wl-app": MandovaAmbulanceWlApp;
+        "mandova-ambulance-wl-editor": MandovaAmbulanceWlEditor;
         "mandova-ambulance-wl-list": MandovaAmbulanceWlList;
     }
 }
@@ -31,6 +91,8 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "mandova-ambulance-wl-app": LocalJSX.MandovaAmbulanceWlApp & JSXBase.HTMLAttributes<HTMLMandovaAmbulanceWlAppElement>;
+            "mandova-ambulance-wl-editor": LocalJSX.MandovaAmbulanceWlEditor & JSXBase.HTMLAttributes<HTMLMandovaAmbulanceWlEditorElement>;
             "mandova-ambulance-wl-list": LocalJSX.MandovaAmbulanceWlList & JSXBase.HTMLAttributes<HTMLMandovaAmbulanceWlListElement>;
         }
     }
