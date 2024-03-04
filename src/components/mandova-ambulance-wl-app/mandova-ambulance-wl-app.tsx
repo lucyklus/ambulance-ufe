@@ -56,7 +56,12 @@ export class MandovaAmbulanceWlApp {
     return (
       <Host>
         {element === 'editor' ? (
-          <mandova-ambulance-wl-editor entry-id={entryId} oneditor-closed={() => navigate('./list')}></mandova-ambulance-wl-editor>
+          <mandova-ambulance-wl-editor
+            ambulance-id={this.ambulanceId}
+            api-base={this.apiBase}
+            entry-id={entryId}
+            oneditor-closed={() => navigate('./list')}
+          ></mandova-ambulance-wl-editor>
         ) : (
           <mandova-ambulance-wl-list
             ambulance-id={this.ambulanceId}
