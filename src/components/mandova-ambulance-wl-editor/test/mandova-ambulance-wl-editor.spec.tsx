@@ -1,8 +1,8 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { MandovaAmbulanceWlEditor } from '../mandova-ambulance-wl-editor';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import { Condition, WaitingListEntry } from '../../../api/ambulance-wl';
+import { MandovaAmbulanceWlEditor } from '../mandova-ambulance-wl-editor';
 
 describe('mandova-ambulance-wl-editor', () => {
   const sampleEntry: WaitingListEntry = {
@@ -73,7 +73,7 @@ describe('mandova-ambulance-wl-editor', () => {
 
     const page = await newSpecPage({
       components: [MandovaAmbulanceWlEditor],
-      html: `<mandova-ambulance-wl-editor entry-id="test-entry" ambulance-id="test-ambulance" api-base="http://sample.test/api"></<pfx>-ambulance-wl-editor>`,
+      html: `<mandova-ambulance-wl-editor entry-id="test-entry" ambulance-id="test-ambulance" api-base="http://sample.test/api"></<mandova-ambulance-wl-editor>`,
     });
     let items: any = await page.root.shadowRoot.querySelectorAll('md-filled-text-field');
 
