@@ -128,30 +128,6 @@ export class MandovaAmbulanceWlEditor {
             value={new Date(this.entry?.estimatedStart || Date.now()).toLocaleTimeString()}>
             <md-icon slot="leading-icon">login</md-icon>
           </md-filled-text-field>
-
-          <md-filled-select
-            label="Dôvod návštevy"
-            value={this.entry?.condition?.code}
-            oninput={(ev: InputEvent) => {
-              if (this.entry) {
-                this.entry.condition.code = this.handleInputEvent(ev);
-              }
-            }}
-          >
-            <md-icon slot="leading-icon">sick</md-icon>
-            <md-select-option value="folowup">
-              <div slot="headline">Kontrola</div>
-            </md-select-option>
-            <md-select-option value="nausea">
-              <div slot="headline">Nevoľnosť</div>
-            </md-select-option>
-            <md-select-option value="fever">
-              <div slot="headline">Horúčka</div>
-            </md-select-option>
-            <md-select-option value="ache-in-throat">
-              <div slot="headline">Bolesti hrdla</div>
-            </md-select-option>
-          </md-filled-select>
           {this.renderConditions()}
         </form>
 
